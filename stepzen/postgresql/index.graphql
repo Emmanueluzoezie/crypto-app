@@ -1,0 +1,102 @@
+type Favorite_crypto {
+  total_market: Float
+  symbol: String
+  username: String
+  rank: Float
+  price: Float
+  percent: Float
+  name: String
+  market_cap: Float
+  image: String
+  id: ID!
+  created_at: DateTime
+}
+
+"""
+The following queries are just a set of examples of how to access your schema.
+Feel free to modify them or aggregate more.
+"""
+type Query {
+  " Queries for type 'Favorite_crypto' "
+  getFavorite_cryptoById(id: ID!): [Favorite_crypto]
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      query: """
+      SELECT "created_at", "id", "image", "market_cap" as "market_cap", "name", "percent", "price", "rank", "symbol", "total_market" as "total_market" FROM "favorite_crypto" WHERE "id" = $1
+      """
+      configuration: "postgresql_config"
+    )
+  getFavorite_cryptoByIdAndTotal_market(
+    id: ID!
+    total_market: Float!
+  ): [Favorite_crypto]
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      query: """
+      SELECT "created_at", "id", "image", "market-cap" as "market_cap", "name", "percent", "price", "rank", "symbol", "total_market" as "total_market" FROM "favorite_crypto" WHERE "id" = $1 AND "total_market" = $2
+      """
+      configuration: "postgresql_config"
+    )
+  getFavorite_cryptoList: [Favorite_crypto]
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "favorite_crypto"
+      configuration: "postgresql_config"
+    )
+
+    getFavorite_cryptoListByUsername(username:String!): [Favorite_crypto]
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      query: """
+      SELECT * FROM "favorite_crypto" WHERE "favorite_crypto"."username" = $1 ORDER BY "favorite_crypto"."rank" DESC
+      """
+      configuration: "postgresql_config"
+    )
+  getFavorite_cryptoPaginatedList(first: Int, after: Int): [Favorite_crypto]
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      query: """
+      SELECT "created_at", "id", "image", "market-cap" as "market_cap", "name", "percent", "price", "rank", "symbol", "total-market" as "total_market" FROM "favorite-crypto" LIMIT $1 OFFSET $2
+      """
+      configuration: "postgresql_config"
+    )
+}
+
+"""
+The following mutations are just a set of examples of how to access your schema.
+Feel free to modify them or aggregate more.
+"""
+type Mutation {
+  " Mutations for type 'Favorite_crypto' "
+  deleteFavorite_crypto(name: String!): Favorite_crypto
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "favorite_crypto"
+      dml: DELETE
+      configuration: "postgresql_config"
+    )
+  insertFavorite_crypto(
+    total_market: Float
+    name: String
+    image: String
+    price: Float
+    rank: Float
+    username: String
+    symbol: String
+    market_cap: Float
+    percent: Float
+  ): Favorite_crypto
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "favorite_crypto"
+      dml: INSERT
+      configuration: "postgresql_config"
+    )
+}

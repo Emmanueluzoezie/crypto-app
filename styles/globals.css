@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base{
+    .select-wrapper {
+      height: 50px;
+      overflow-y: visible;
+      position: relative;
+    }
+
+    .select {
+      /* make it min-height*/
+      max-height: 150px ;
+      border-radius: 25px;
+      border-color: white;
+      padding: 10px;
+      height: auto !important;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
+  }
