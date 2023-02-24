@@ -3,9 +3,6 @@ import Link from "next/link"
 import axios from "axios";
 import useSWR from "swr";
 import { useRouter } from 'next/router'
-import SearchIcon from '@mui/icons-material/Search'
-import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
-import { Avatar } from '@mui/material'
 import { NumericFormat } from 'react-number-format';
 import { useContextState } from "../../context/context";
 import Loading from "../../components/Loading";
