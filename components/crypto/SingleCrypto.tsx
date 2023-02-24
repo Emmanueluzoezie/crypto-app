@@ -143,15 +143,15 @@ const SingleCrypto = ({ name, id, rank, allTimeHigh, total_market, image, price,
                       </div>
                       <div className='md:hidden w-[25%] truncate flex items-center'>
                           <h1 className='text-[13px] sm:text-[16px] m-0 truncate px-1 font-semibold' ><NumericFormat value={market_cap} displayType={'text'} thousandSeparator={true} /></h1>
-                          <span className='text-xs font-medium text-gray-500 font-serif'>{market_cap?.length >= 9 ? "Bn" : "Ml"}</span>
+                          <span className='text-xs font-medium text-gray-500 font-serif'>{market_cap?.length >= 9 ? "Ml" : "Bn"}</span>
                       </div>
                       <div className='hidden md:flex md:w-[32%] lg:w-[31%] truncate md:px-3'>
                           <h1 className='text-[10px] sm:text-[16px] m-0 truncate px-1 font-semibold' ><NumericFormat value={market_cap} displayType={'text'} thousandSeparator={true} /></h1>
-                          <span className='text-xs font-medium text-gray-500 font-serif'>{market_cap?.length >= 9 ? "Bn" : "Ml"}</span>
+                          <span className='text-xs font-medium text-gray-500 font-serif'>{market_cap?.length >= 9 ? "Ml" : "Bn"}</span>
                       </div>
                       <div className='hidden lg:flex lg:w-[31%] truncate md:px-3'>
                           <h1 className='font-semibold text-[15px]  m-0 sm:text-[16px] truncate'><NumericFormat value={market_cap} displayType={'text'} thousandSeparator={true} /></h1>
-                          <span className='text-xs font-medium text-gray-500 font-serif'>{marketCapDailys.length >= 9 ? "Bn" : "Ml"}</span>
+                          <span className='text-xs font-medium text-gray-500 font-serif'>{marketCapDailys.length >= 9 ? "Ml" : "Bn"}</span>
                       </div>
                   </div>
               </div>
